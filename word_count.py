@@ -36,10 +36,10 @@ def count_words(dataframe):
     dataframe['text'] = dataframe['text'].str.split()
     dataframe = dataframe.explode('text')
     dataframe = dataframe.rename(columns={'text': 'word'})
-    dataframe['value'] = 1
+    dataframe['count'] = 1
     conteo = dataframe.groupby('word', as_index=False).agg(
         {
-            'value': 'sum'
+            'count': 'sum'
         }
     )
     return conteo
@@ -58,6 +58,7 @@ def run(input_directory, output_filename):
     dataframe = clean_text(dataframe)
     dataframe = count_words(dataframe)
     save_output(dataframe,output_filename)
+    print(dataframe)
 
 
 if __name__ == "__main__":
