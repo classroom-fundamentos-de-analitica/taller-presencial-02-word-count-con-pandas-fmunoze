@@ -58,7 +58,6 @@ def run(input_directory, output_filename):
     dataframe = clean_text(dataframe)
     dataframe = count_words(dataframe)
     save_output(dataframe,output_filename)
-    print(dataframe)
 
 
 if __name__ == "__main__":
